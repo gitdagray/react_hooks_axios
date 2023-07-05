@@ -11,7 +11,8 @@ const useAxiosFunction = () => {
             axiosInstance,
             method,
             url,
-            requestConfig = {}
+            requestConfig = {},
+            headers = {}
         } = configObj;
 
         try {
@@ -21,7 +22,7 @@ const useAxiosFunction = () => {
             const res = await axiosInstance[method.toLowerCase()](url, {
                 ...requestConfig,
                 signal: ctrl.signal
-            });
+            },{ headers });
             console.log(res);
             setResponse(res.data);
         } catch (err) {
